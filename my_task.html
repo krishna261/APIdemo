@@ -1,0 +1,592 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>My_task</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    
+<!-- <link href="maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"> -->
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"  rel="stylesheet">
+<!-- <script src="maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script> -->
+<!--<link href="APITASK/css/bootstrap.min.css " rel="stylesheet">-->
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<!-- <script src="code.jquery.com/jquery-1.11.1.min.js"></script> -->
+<!-- <script
+  src=" https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script> -->
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+ <!--<script src="jq/font-awesome.min.css" crossorigin="anonymous"></script>-->
+ 
+ <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous" >
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.4.3/css/mdb.min.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous" >
+<style>
+  
+@import url(https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.4.3/css/mdb.min.css);
+
+.hm-gradient {
+    background-image: linear-gradient(to top, #f3e7e9 0%, #e3eeff 99%, #e3eeff 100%);
+}
+.darken-grey-text {
+    color: #2E2E2E;
+}
+.danger-text {
+    color: #ff3547; }
+.default-text {
+    color: #2BBBAD; 
+}
+.info-text {
+    color: #33b5e5; 
+}
+.form-white .md-form label {
+  color: #fff; 
+}
+.form-white input[type=text]:focus:not([readonly]) {
+    border-bottom: 1px solid #fff;
+    -webkit-box-shadow: 0 1px 0 0 #fff;
+    box-shadow: 0 1px 0 0 #fff; 
+}
+.form-white input[type=text]:focus:not([readonly]) + label {
+    color: #fff; 
+}
+.form-white input[type=password]:focus:not([readonly]) {
+    border-bottom: 1px solid #fff;
+    -webkit-box-shadow: 0 1px 0 0 #fff;
+    box-shadow: 0 1px 0 0 #fff; 
+}
+
+
+
+.form-white input[type=password]:focus:not([readonly]) + label {
+    color: #fff; 
+}
+.form-white input[type=password], .form-white input[type=text] {
+    border-bottom: 1px solid #fff; 
+}
+.form-white .form-control:focus {
+    color: #fff;
+}
+.form-white .form-control {
+    color: #fff;
+}
+.form-white textarea.md-textarea:focus:not([readonly]) {
+    border-bottom: 1px solid #fff;
+    box-shadow: 0 1px 0 0 #fff;
+    color: #fff; 
+}
+.form-white textarea.md-textarea  {
+    border-bottom: 1px solid #fff;
+    color: #fff;
+}
+.form-white textarea.md-textarea:focus:not([readonly])+label {
+    color: #fff;
+}
+.ripe-malinka-gradient {
+    background-image: linear-gradient(120deg, #f093fb 0%, #f5576c 100%);
+}
+.near-moon-gradient {
+    background-image: linear-gradient(to bottom, #5ee7df 0%, #b490ca 100%);
+}
+    </style>
+
+</head>
+<body>
+<div class="container">
+<div class="row mt-5">
+                <!-- Grid column -->
+                <div id=login_div class="col-sm-8 col-md-8 col-lg-4 mx-auto" style="display: block; border-radius: 10px ;" display="none">
+                    <div class="card">
+                        <div class="card-body">
+                            <h3 class="text-center default-text py-3"><i class="fa fa-lock"></i> Login </h3>
+                            <!--Body-->
+                            <div class="md-form">
+                                <i class="fa fa-envelope prefix grey-text"></i>
+                                <input type="text" id="txt_mail" class="form-control" placeholder="Your email"  value="bansi@getnada.com" required autofocus>
+                                <label for="defaultForm-email"></label>
+                            </div>
+                            <div class="md-form">
+                                <i class="fa fa-lock prefix grey-text"></i>
+                                <input type="password" id="txt_pws" class="form-control" placeholder="Your password" value="6zpmuQKO5T" required>
+                                <label for="defaultForm-pass"></label>
+                            </div>
+                            <div class="text-center">
+                                <button class="btn btn-default waves-effect waves-light" id="btn_sub">Log In</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+                
+                </div>
+<br>
+<br>
+                <div class="container"  id="tbldiv"  style = "display:none;">
+                        
+                        <div class="alert alert-secondary">
+                            <h1 class="text-center" style="color: #4b2354;">Task Details</h1>
+                            </div>
+                            <table class="table table-hover mt-3" id="AppendData">
+                                    <thead class="alert alert-dark">
+                                        <tr class="">
+                                            <th>Task Name</th>
+                                            <th>Start Date</th>
+                                            <th>End Date </th>
+                                            <th>Assign To </th>
+                                            <th>Status</th>
+                                            <th>Time Slot</th>
+                                            <th>Site</th>
+                                            <th>Site Address</th>
+                                            <th>Action </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tBody">
+                        
+                        
+                                    </tbody>
+                                </table>
+                   
+                    <p id="display">No Record Found..!</p>
+        <form action="" method="get">
+
+
+
+            <div class="modal fade bd-example-modal-lg" id="model_edit" tabindex="-1" role="dialog"
+                aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header alert alert-dark">
+                            <h4 class="modal-title "> Edit Task </h4>
+
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+                        <div class="row">
+                            <div class=" col"></div>
+                            <div class="col-md-10">
+                                <div class="row mt-3">
+                                    <div class="col-md-6">
+                                        <div class="">
+                                            <label for="AssignToUserList"
+                                                style="color:#585858;font-weight: bold;">Assign To User</label>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="">
+
+                                            <input type="text" class="form-control" min="" max="" tabindex="1"
+                                                name="AssignToUserList" id="AssignToUserList" pattern="^[a-zA-Z ]*$"
+                                                autofocus="" title="Enter Task Name" placeholder="Assign To User">
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="row mt-3">
+                                    <div class="col-md-6">
+                                        <div class="">
+                                            <label for="txtTaskName" style="color:#585858;font-weight: bold;">Task
+                                                Name</label>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="">
+                                            <input type="text" class="form-control" min="" max="" tabindex="2"
+                                                name="txtTaskName" id="txtTaskName" pattern="^[a-zA-Z ]*$"
+                                                title="Enter Task Name" placeholder="Task Name">
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="row mt-3">
+                                    <div class="col-md-6">
+                                        <div class="">
+                                            <label for="TimeSlotList" style="color:#585858;font-weight: bold;"
+                                                class="">Time Slot</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="">
+                                            <label for="TaskStatusList" style="color:#585858;font-weight: bold;"
+                                                class="dark x ">Task Status</label>
+                                        </div>
+                                    </div>
+                                </div>                      
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <select name="TimeSlotList" id="TimeSlotList" name="TimeSlotList"
+                                                tabindex="3" class="form-control">
+                                                <option value="Select"> Select Time Slot</option>
+
+
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <select name="TaskStatusList" id="TaskStatusList" name="TaskStatusList"
+                                                tabindex="4" class="form-control">
+                                                <option value="Select"> Select Task Status</option>
+                                                <option value="India">India</option>
+
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="">
+                                            <label for="txtStartDate" style="color:#585858;font-weight: bold;"
+                                                tabindex="" class=" ">Start Date:</label>
+
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="">
+                                            <label for="txtEndDAte" style="color:#585858;font-weight: bold;"
+                                                class=" ">End Date</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <input type="date" name="txtStartDate" max="" class="form-control"
+                                                tabindex="5" id="txtStartDate">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <input type="date" name="txtEndDAte" max="" class="form-control"
+                                                tabindex="6" id="txtEndDAte">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="">
+                                            <label for="txtSiteName" style="color:#585858;font-weight: bold;"
+                                                class="dark ">Site Name</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="">
+                                            <label for="txtAddress" style="color:#585858;font-weight: bold;"
+                                                class="dark ">Site Address</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <select name="SiteNameList" id="SiteNameList" name="SiteNameList"
+                                                tabindex="7" class="form-control">
+                                                <option value="Select"> Select Site Name</option>
+                                                <option value="Romania">Romania</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" name="txtSiteAddress" pattern=""
+                                                tabindex="8" title="Site Address" id="txtSiteAddress"
+                                                placeholder="Site Address">
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="col"></div>
+                        </div>
+                        <div class="modal-footer mt-2">
+                            <button type="button" tabindex="9" class="btn btn-danger"
+                                data-dismiss="modal">Close</button>
+                            <button type="button" tabindex="10" class="btn btn-primary">Save changes</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        </form>
+
+    </div>
+    </form>
+ <script>
+
+var token;
+        var tablerowCount;
+        var tablehiddenrow;
+        var Tasklist_Val;
+        var APIdata
+        // $(document).ready(function () {
+
+        //     $("#txtSearch").keyup(function () {
+
+        //         var value = $(this).val().toLowerCase();
+               
+        //         $("#tBody tr").filter(function () {
+        //             $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+
+        //         });
+               
+        //     });
+            
+            
+            $("#btn_sub").click(function () {
+
+                $.post("https://test.ilinkair.com.au/ilinkairapi/Token",
+                    {
+                        "UserName": $("#txt_mail").val(),
+                        "Password": $("#txt_pws").val(),
+                        "grant_type": "password"
+
+                    },
+                    
+                    function (data, status) {
+                        token = data.access_token;
+                        $("#login_div").hide();
+                        $("#tbldiv").show();
+                       // Test();
+                        GetCall()
+                    });
+
+            });
+            $("#tbldiv").hide();
+            $("#display").hide();
+          /*  Document.ready Close*/
+
+
+       
+        function gettablecontent() {
+            
+            $(".getbtnid").click(function () {
+                var trid = $(this).closest('tr').attr("id");
+                
+                $.ajax({
+                    async: true,
+
+                    type: 'GET',
+                    url: 'https://test.ilinkair.com.au/iLinkAirApi/api/Tasks/gettaskbyid?isilinkapp=true&comapnyid=4168&Id=' + trid,
+                    data: {},
+                    headers: {
+                        "Authorization": "Bearer " + token,
+                        "cache-control": "no-cache",
+                    },
+                    success: function (gettask) {
+                        //APIdata = listdata;
+                        BinddataToModal(gettask);
+                        
+                        console.log(gettask);
+                    },
+                });
+
+                $.ajax({    /* Time Slot API Call  */
+                    async: true,
+
+                    type: 'GET',
+                    url: 'https://test.ilinkair.com.au/iLinkAirApi/api/Tasks/gettimeslots?groupid=4167&companyid=4168',
+                    data: {},
+                    headers: {
+                        "Authorization": "Bearer " + token,
+                        "cache-control": "no-cache",
+                    },
+                    success: function (getTimeSlot) {
+                        //APIdata = listdata;
+                        BindtimeSlot(getTimeSlot)
+                       
+                        console.log(getTimeSlot);
+                    },
+                });
+
+                $.ajax({  /* Task Status API Call  */
+                    async: true,
+
+                    type: 'GET',
+                    url: 'https://test.ilinkair.com.au/iLinkAirApi/api/Tasks/gettimeslots?groupid=4167&companyid=4168',
+                    data: {},
+                    headers: {
+                        "Authorization": "Bearer " + token,
+                        "cache-control": "no-cache",
+                    },
+                    success: function (getTaskStatus) {
+                        //APIdata = listdata;
+                        BindtimeSlot(getTaskStatus)
+                       
+                        console.log(getTaskStatus);
+                    },
+                });
+
+            });
+        }
+
+        function BindtimeSlot(getTimeSlot)
+        {
+            if (getTimeSlot.ResponseStatus == 1) {
+                if (getTimeSlot.Result != null) {
+                    $.each(getTimeSlot.Result, function (value) {
+   
+                        $("#TaskList").append('<option value="' + getTimeSlot.Result[value].Description + '">' + getTimeSlot.Result[value].Description + '</option>');
+
+
+                    });
+
+                }
+            }
+        }
+
+        function BindStatusList(getTaskStatus)
+        {
+            if (getTaskStatus.ResponseStatus == 1) {
+                if (getTaskStatus.Result != null) {
+                    $.each(getTaskStatus.Result, function (value) {
+
+                        $("#TaskList").append('<option value="' + getTaskStatus.Result[value].Description + '">' + getTaskStatus.Result[value].Description + '</option>');
+
+
+                    });
+
+                }
+            }
+        }
+
+
+
+
+        function BinddataToModal(gettask) {
+            debugger;
+            if (gettask.ResponseStatus == 1) {
+                if (gettask.Result != null) {
+
+                  // var  StartDate = gettask.Result.StartDate;ConvertDate(StartDate)
+               //    var  EndDate = gettask.Result.EndDate;BindStatuslist(listselect
+               //     var listselect = gettask.Result.TaskStatus
+                    $(".bd-example-modal-lg").modal("show");
+                    $("#txtTaskName").val(gettask.Result.TaskName);
+                    $("#txtStartDate").val(gettask.Result.StartDate);
+                    $("#txtEndDAte").val(gettask.Result.EndDate);
+                    $("#AssignToUserList").val(gettask.Result.AssignToUser);
+                    $("#TaskStatusList").val(gettask.Result.TaskStatus);
+                    $("#TimeSlotList").val(gettask.Result.TimeSlotText);
+                    $("#SiteNameList").val(gettask.Result.SiteName);
+                    $("#txtSiteAddress").val(gettask.Result.SiteAddress);
+
+                }
+            }
+            else
+            alert(" Record Not Found");
+
+        }
+        
+        
+        function GetCall() {
+
+            $.ajax({
+                async: true,
+
+                type: 'GET',
+                url: 'https://test.ilinkair.com.au/iLinkAirApi/api/Tasks/lists?companyid=4168',
+                data: {},
+                headers: {
+                    "Authorization": "Bearer " + token,
+                    "cache-control": "no-cache",
+                },
+                success: function (listdata) {
+                    APIdata = listdata;
+                    BindTable(listdata);
+                    BindSelectlistdata(APIdata)
+                    DistinctVal();
+                    gettablecontent();
+
+                    console.log(listdata);
+                },
+            });
+        }
+
+        function BindSelectlistdata(APIdata) {
+
+            if (APIdata.ResponseStatus == 1) {
+                if (APIdata.Result != null && APIdata.Result.APITasksList != null) {
+                    $.each(APIdata.Result.APITasksList, function (value) {
+
+                        $("#TaskList").append('<option value="' + APIdata.Result.APITasksList[value].TaskStatus + '">' + APIdata.Result.APITasksList[value].TaskStatus + '</option>');
+
+
+                    });
+
+                }
+            }
+
+        }
+        
+        
+
+        function DistinctVal() {
+            $('select option').each(function () {
+                $(this).siblings("[value = " + this.value + "]").remove();
+            })
+        }
+
+        $("#TaskList").change(function () {
+            $("#tBody").html("");
+            TaskList = $("#TaskList").val();
+            if (TaskList != "SelectTaskStatus") {
+                $.each(APIdata.Result.APITasksList, function (value) {
+
+                    if (TaskList == APIdata.Result.APITasksList[value].TaskStatus) {
+                        var tr = '<tr><td>' + APIdata.Result.APITasksList[value].TaskName + '</td>' +
+                            '<td>' + APIdata.Result.APITasksList[value].StartDate + '</td>' +
+                            '<td>' + APIdata.Result.APITasksList[value].EndDate + '</td>' +
+                            '<td>' + APIdata.Result.APITasksList[value].AssignToUser + '</td>' +
+                            '<td>' + APIdata.Result.APITasksList[value].TaskStatus + '</td>' +
+                            '<td>' + APIdata.Result.APITasksList[value].TimeSlotText + '</td>' +
+                            '<td>' + APIdata.Result.APITasksList[value].SiteName + '</td>' +
+                            '<td>' + APIdata.Result.APITasksList[value].SiteAddress + '</td>' +
+                            '<td><button type="button" class="btn btn-info mb-1 getbtnid" data-toggle="modal" data-target=".bd-example-modal-lg"><i class="fas fa-eye"></i></button><br/> <button type="button" data-toggle="modal" data-target=".bd-example-modal-lg" class="btn btn-success mb-1 getbtnid"><i class="far fa-edit"></i></button><br/> <button type="button" class="btn btn-danger getbtnid"><i class="fas fa-trash-alt"></i></button> </td>< /tr>';
+                        $("#tBody").append(tr);
+                    }
+                });
+            }
+            else {
+                BindTable(APIdata)
+            }
+
+        });
+
+        function BindTable(listdata) {
+            var i = 0;
+           
+            if (listdata.ResponseStatus == 1) {
+                if (listdata.Result != null && listdata.Result.APITasksList != null) {
+                    $.each(listdata.Result.APITasksList, function (value) {
+                        i = i + 1;
+                        //   $("tr").attr("id" ,listdata.Result.APITasksList[value].TaskId );
+                        $("td").attr("id", listdata.Result.APITasksList[value].TaskId);
+                        var tr = '<tr id = "' + listdata.Result.APITasksList[value].TaskId + ' "> <td>' + listdata.Result.APITasksList[value].TaskName + '</td>' +
+                            '<td>' + listdata.Result.APITasksList[value].StartDate + '</td>' +
+                            '<td>' + listdata.Result.APITasksList[value].EndDate + '</td>' +
+                            '<td>' + listdata.Result.APITasksList[value].AssignToUser + '</td>' +
+                            '<td>' + listdata.Result.APITasksList[value].TaskStatus + '</td>' +
+                            '<td>' + listdata.Result.APITasksList[value].TimeSlotText + '</td>' +
+                            '<td>' + listdata.Result.APITasksList[value].SiteName + '</td>' +
+                            '<td>' + listdata.Result.APITasksList[value].SiteAddress + '</td>' +
+                            '<td><button type="button" data-toggle="modal" data-target=".bd-example-modal-lg" class="btn btn-info mb-1 getbtnid" id=" ' + i + '"><i class="fas fa-eye"></i></button><br/> <button type="button" id="' + i + '" data-toggle="modal" data-target=".bd-example-modal-lg"  class="btn btn-success mb-1 getbtnid"><i class="far fa-edit"></i></button><br/> <button type="button" id="' + i + '"  class="btn btn-danger getbtnid"><i class="fas fa-trash-alt"></i></button> </td>< /tr>';
+                        $("#tBody").append(tr);
+
+
+                    });
+
+                }
+            }
+        }
+
+              </script>
+                </body>
+                </html>
